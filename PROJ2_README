@@ -1,0 +1,159 @@
+***Anomaly Detection Model Comparison***
+
+**Overview**
+
+This repository contains a comparison of multiple anomaly detection models. The goal of this project is to train and evaluate various anomaly detection techniques using datasets such as the Credit Card Fraud dataset. 
+
+**The models being compared include:**
+
+1.Isolation Forest
+
+2.One-Class SVM
+
+3.Local Outlier Factor (LOF)
+
+4.Autoencoder (PyOD)
+
+5.Gaussian Mixture Model (GMM)
+
+**********************************************************************************************************************************************************************************************************************************
+
+The purpose of this comparison is to evaluate the performance of these models based on their precision, recall, F1-score, and average precision (AP) score.
+
+**Features**
+
+1.Model Training and Evaluation: Train and evaluate anomaly detection models with optional hyperparameter optimization using Optuna.
+
+2.Visualization: Plot and compare models using precision-recall curves and bar charts.
+
+3.Data Loading: Load and preprocess datasets such as the Credit Card Fraud dataset.
+
+4.Hyperparameter Optimization: Use Optuna for automatic hyperparameter tuning of models like Isolation Forest and One-Class SVM.
+
+**********************************************************************************************************************************************************************************************************************************
+
+**Dependencies**
+
+To run the code, you will need the following python libraries : 
+
+1.pyod: For anomaly detection models.
+
+2.scikit-learn: For machine learning utilities like preprocessing, metrics, and evaluation.
+
+3.Optuna: For hyperparameter optimization.
+
+4.shap: For model interpretability (optional).
+
+5.matplotlib, seaborn: For plotting and visualizations.
+
+6.pandas, numpy: For data manipulation.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+***Install dependencies via pip:***
+
+pip install shap optuna pyod scikit-learn matplotlib seaborn pandas numpy
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+**Dataset**
+
+***Credit Card Fraud Dataset***
+
+This dataset is used to train the models. It contains transaction data with labeled fraudulent (anomalous) and non-fraudulent transactions.
+
+Dataset URL: https://raw.githubusercontent.com/nsethi31/Kaggle-Data-Credit-Card-Fraud-Detection/master/creditcard.csv
+
+The target variable is 'Class', where 1 represents fraud and 0 represents normal transactions.
+
+**********************************************************************************************************************************************************************************************************************************
+
+How It Works:
+
+1. Data Loading: The ColabDataLoader class is used to load datasets from external URLs. The load_creditcard method downloads the credit card fraud dataset and returns the features (X) and labels (y).
+
+2. Model Training: The AnomalyDetector class trains multiple anomaly detection models. It supports models from scikit-learn (Isolation Forest, One-Class SVM, LOF, and GMM) and PyOD (Autoencoder). The train method trains all models and allows for hyperparameter optimization with Optuna.
+
+3. Model Evaluation: The evaluate method compares the trained models by generating precision-recall curves and computing evaluation metrics like precision, recall, F1-score, and average precision.
+
+4. Visualization: After evaluating the models, the results are visualized using precision-recall curves and bar charts for model comparison based on F1-score and training time.
+
+**********************************************************************************************************************************************************************************************************************************
+
+**Running the Comparison**
+
+To run the comparison on the Credit Card Fraud dataset:
+
+results = run_comparison(dataset='creditcard', sample_size=10000, optimize=True)
+
+This will:
+
+Load the dataset with 10,000 samples.
+
+Train and optimize the models using Optuna.
+
+Evaluate the models on a test set and generate visualizations.
+
+**********************************************************************************************************************************************************************************************************************************
+
+**Results**
+
+The results are displayed in two ways:
+
+1. Precision-Recall Curve: A plot comparing the recall and precision for each model.
+
+2. Bar Charts:
+
+        -> F1-score comparison: A bar chart showing how each model performs in terms of F1-score.
+
+        -> Training time comparison: A bar chart showing the time taken to train each model.
+
+**********************************************************************************************************************************************************************************************************************************
+
+***Hyperparameter Optimization***
+
+For Isolation Forest and One-Class SVM, Optuna is used to optimize the following hyperparameters:
+
+1.Isolation Forest:
+
+    -> n_estimators
+
+    -> max_samples
+
+    -> contamination
+
+2.One-Class SVM:
+
+    -> nu
+
+    -> kernel
+
+Optuna automatically finds the best hyperparameters to maximize model performance.
+
+**********************************************************************************************************************************************************************************************************************************
+
+**Example Output**
+
+After running the comparison, you will see a table with the following metrics for each model:
+
+1.Precision: The precision of the model on the positive class (anomalies).
+
+2.Recall: The recall of the model on the positive class (anomalies).
+
+3.F1-score: The harmonic mean of precision and recall.
+
+4.AP: Average Precision score, which summarizes the precision-recall curve.
+
+5.Time: Time taken to train the model.
+
+Additionally, you will get visualizations comparing the models on the aforementioned metrics.
+
+**********************************************************************************************************************************************************************************************************************************
+
+***Future Improvements***
+
+Add more anomaly detection models like k-NN, PCA-based methods, etc.
+
+Integrate SHAP for model interpretability and feature importance analysis.
+
+Support additional datasets for anomaly detection.
+
+
