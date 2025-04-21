@@ -1,0 +1,66 @@
+# Real-Time Sentiment Analysis Dashboard
+
+This project presents an interactive dashboard built using Hugging Face Transformers and Streamlit. It is designed to run directly in Google Colab and utilizes `pyngrok` to expose the Streamlit interface through a public URL. Users can input text and receive real-time sentiment predictions along with a confidence score and a word cloud visualization.
+
+---
+
+## Project Overview
+
+The application performs real-time sentiment analysis using the `distilbert-base-uncased-finetuned-sst-2-english` model from Hugging Face. The interface is built with Streamlit, and the model is hosted inside a Google Colab environment. The output is served via ngrok to provide a shareable web interface for interactive use.
+
+---
+
+## Features
+
+- Text input for user-provided content
+- Real-time sentiment classification (Positive or Negative)
+- Displays model confidence score
+- Generates a dynamic word cloud based on user input
+- Easily shareable live URL using ngrok
+
+---
+
+## Tech Stack
+
+- Python
+- Transformers (Hugging Face)
+- Streamlit
+- WordCloud
+- pyngrok
+- Google Colab
+
+---
+
+## Project Structure
+
+---
+
+## How to Run
+
+1. Open the notebook in Google Colab.
+
+2. (Optional) Upload any text dataset if needed, or simply input your own text.
+
+3. Install required libraries by running:
+   ```python
+   !pip install transformers streamlit wordcloud pyngrok
+
+---------
+
+Write the Streamlit application to a Python file:
+
+%%writefile dashboard.py
+
+---------
+Run the app and expose it via ngrok:
+
+
+!streamlit run dashboard.py &
+from pyngrok import ngrok
+public_url = ngrok.connect(port='8501')
+print(public_url)
+
+
+Open the public URL http://xxxxxx.ngrok.io  to access the dashboard.
+
+
